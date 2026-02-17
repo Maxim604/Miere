@@ -15,30 +15,47 @@
     <script src="../js/galerie.js" defer></script>
 </head>
 
+
+<div id="cart-modal" class="cart-modal">
+    <div class="cart-modal-content">
+        <span class="close-btn" onclick="inchideCos()">×</span>
+        <h3>🛒 Coșul tău</h3>
+        <ul id="cart-list"></ul>
+        <p id="cart-total"></p>
+    </div>
+</div>
+
 <body>
     <!--header/navbar-->
     <header>
         <nav class="navbar section-content">
             <a href="../index.html#principal" class="nav-logo">
-                <h2 class="logo-text">🍯Miere</h2>
+                <h2 class="logo-text">🍯Albinuța Mea</h2>
             </a>
             <ul class="nav-menu">
                 <button id="menu-close-button" class="fas fa-times"></button>
 
                 <li class="nav-intem">
-                    <a href="../index.html" class="nav-link">Acasă</a>
+                    <a href="home.html" class="nav-link">Acasă</a>
                 </li>
                 <li class="nav-intem">
                     <a href="despre.html" class="nav-link">Despre noi</a>
                 </li>
                 <li class="nav-intem">
-                    <a href="produse.html" class="nav-link">Produse</a>
+                    <a href="produse.html" class="nav-link active">Produse</a>
                 </li>
                 <li class="nav-intem">
                     <a href="galerie.html" class="nav-link">Galerie</a>
                 </li>
                 <li class="nav-intem">
                     <a href="contacte.html" class="nav-link">Contacte</a>
+                </li>
+                <li class="nav-intem">
+                    <a href="recenzii.html" class="nav-link">Recenzii</a>
+                </li>
+
+                <li class="nav-intem">
+                    <a href="account.html" class="nav-btn">Contul Tău</a>
                 </li>
             </ul>
 
@@ -69,10 +86,17 @@
 
         <!--vanzari sectiune-->
         <section class="section menu-section produse" id="menu">
+            
+            <button class="cart-btn" onclick="scoateDinCos()">
+                <img src="../imagini/—Pngtree—basket_5407070.png" alt="Coș" class="cart-icon">
+                <span id="cart-count">0</span>
+            </button>
+
             <h2 class="section-title">Produsele noastre</h2>
+
             <div class="section-content">
                 <ul class="menu-list">
-                    <li class="menu-item">
+                    <li class="menu-item" onclick="adaugaProdus('Miere Polifloră', 120)">
                         <div class="info">
                             <img src="../imagini/miere 1.jpg" alt="a" class="menu-image">
                             <p class="pret">120 lei</p>
@@ -80,7 +104,7 @@
                         <h3 class="name">Miere Polifloră</h3>
                         <p class="text">Un amestec bogat de nectar floral, perfect pentru energie și imunitate.</p>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item" onclick="adaugaProdus('Miere Polifloră', 120)">
                         <div class="info">
                             <img src="../imagini/miere 2.jpg" alt="b" class="menu-image">
                             <p class="pret">150 lei</p>
@@ -88,7 +112,7 @@
                         <h3 class="name">Miere de Salcâm</h3>
                         <p class="text">Delicată, clară și perfectă pentru îndulcirea naturală a ceaiului.</p>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item" onclick="adaugaProdus('Miere Polifloră', 120)">
                         <div class="info">
                         <img src="../imagini/miere 3.jpg" alt="c" class="menu-image">
                             <p class="pret">100 lei</p>
@@ -96,7 +120,7 @@
                         <h3 class="name">Miere de Tei</h3>
                         <p class="text">Parfumată și relaxantă, ideală pentru un somn odihnitor.</p>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item" onclick="adaugaProdus('Miere Polifloră', 120)">
                         <div class="info">
                         <img src="../imagini/miere 4.jpg" alt="d" class="menu-image">
                             <p class="pret">80 lei</p>
@@ -104,7 +128,7 @@
                         <h3 class="name">Miere de Floarea-Soarelui</h3>
                         <p class="text">Dulce și intensă, perfectă pentru un boost de vitalitate.</p>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item" onclick="adaugaProdus('Miere Polifloră', 120)">
                         <div class="info">
                             <img src="../imagini/miere 5.jpg" alt="e" class="menu-image">
                             <p class="pret">190 lei</p>
@@ -113,7 +137,7 @@
                         <h3 class="name">Miere cu Lămâie și Ghimbir</h3>
                         <p class="text">Revigoranta și sănătoasă, ideală pentru sezonul rece.</p>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item" onclick="adaugaProdus('Miere Polifloră', 120)">
                         <div class="info">
                             <img src="../imagini/miere 6.jpg" alt="f" class="menu-image">
                             <p class="pret">150 lei</p>
@@ -148,6 +172,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!---->
     <script src="../js/main.js"></script>
+    <script src="../js/cosul.js"></script>
 </body>
 
 </html>

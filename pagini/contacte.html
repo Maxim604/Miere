@@ -15,7 +15,7 @@
     <script src="../js/galerie.js" defer></script>
 </head>
 
-<body>
+<body onload="if(!currentUser){ window.location.href='/pagini/inreg.html'; }">
     <!--header/navbar-->
     <header>
         <nav class="navbar section-content">
@@ -26,7 +26,7 @@
                 <button id="menu-close-button" class="fas fa-times"></button>
 
                 <li class="nav-intem">
-                    <a href="home.html" class="nav-link">Acasă</a>
+                    <a href="../index.html" class="nav-link">Acasă</a>
                 </li>
                 <li class="nav-intem">
                     <a href="despre.html" class="nav-link">Despre noi</a>
@@ -44,8 +44,11 @@
                     <a href="recenzii.html" class="nav-link">Recenzii</a>
                 </li>
                 <li class="nav-intem">
-                    <a href="account.html" class="nav-btn">Contul Tău</a>
+                    <a href="account.html" class="nav-btn">Contul</a>
                 </li>
+                <li class="nav-intem">
+                    <a href="cos.html" class="cosulet">🛒</a>
+                </li> 
             </ul>
 
             <button id="menu-open-button" class="fas fa-bars"></button>
@@ -103,16 +106,17 @@
 
                 <form class="contact-form" method="post"
                     action="https://script.google.com/macros/s/AKfycbwlXGPCoSeHlP5pJSXaKs0P5Zl-376dFxn7sVbaBPd1bIIen92z3wdd3e7_KJZoIAHOag/exec"
-                    name="contact-form">
-                    <input type="text" name="Nume" placeholder="Nume" class="form-input" required>
-                    <input type="number" name="Număr" placeholder="Număr" class="form-input" required>
-                    <input type="email" name="E-mail" placeholder="E-mail" class="form-input" required>
-                    <input type="text" id="address" name="Adresa" placeholder="Strada, nr, scara, etaj, ap."
+                    name="contact-form" id="contactForm">
+                    <input type="text" name="name" id="name" placeholder="Nume" class="form-input" required>
+                    <input type="number" name="number" id="number" placeholder="Număr" class="form-input" required>
+                    <input type="email" name="email" placeholder="E-mail" class="form-input" required>
+                    <input type="text" name="adress" id="adress" placeholder="Strada, nr, scara, etaj, ap."
                         class="form-input" required>
-                    <textarea name="Informații adiționale" rows="7"
-                        placeholder="Informații adiționale (detalii de livrare, etc.)" class="form-input"
-                        required></textarea>
-                    <input class="button submit-button" type="submit" value="Submit" id="submit">
+                    <textarea name="info" id="info" rows="7"
+                        placeholder="Informații adiționale (comandă specială, etc.)" class="form-input"
+                        required>
+                    </textarea>
+                    <input class="button submit-button" type="submit" value="Submit" id="submit" onclick="contSubmit()">
                 </form>
             </div>
         </section>
@@ -145,11 +149,18 @@
                 proiectului.</p>
         </footer>
     </main>
-
     <!--link swiper-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!---->
-    <script src="../js/main.js"></script>
+<!---->
+
+    <!-- Firebase -->
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+
+
+<script src="../js/main.js"></script>
 </body>
 
 </html>

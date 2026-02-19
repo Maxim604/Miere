@@ -26,7 +26,7 @@
                 <button id="menu-close-button" class="fas fa-times"></button>
 
                 <li class="nav-intem">
-                    <a href="home.html" class="nav-link">Acasă</a>
+                    <a href="../index.html" class="nav-link">Acasă</a>
                 </li>
                 <li class="nav-intem">
                     <a href="despre.html" class="nav-link">Despre noi</a>
@@ -44,8 +44,11 @@
                     <a href="recenzii.html" class="nav-link">Recenzii</a>
                 </li>
                 <li class="nav-intem">
-                    <a href="account.html" class="nav-btn active">Contul Tău</a>
+                    <a href="account.html" class="nav-btn active">Contul</a>
                 </li>
+                <li class="nav-intem">
+                    <a href="cos.html" class="cosulet">🛒</a>
+                </li> 
             </ul>
 
             <button id="menu-open-button" class="fas fa-bars"></button>
@@ -71,9 +74,8 @@
         </section>
 
         <!--acount-->
-        <section class="section contact-section">
-
-        <br>
+        <h2 class="section-title">Contul Tău</h2>
+        <section class="section contact-section recenzion">
         <div class="profile">
             <img id="userAvatar" src="">
             <div class="profile-info">
@@ -94,7 +96,7 @@
             <h3>Scrisori</h3>
             <div id="mailList">Încărcarea scrisorilor...</div>
         </section>
-
+        
         </section>
     </main>
 
@@ -142,9 +144,7 @@ const database = firebase.database();
 
 // controlul intrarii
 let currentUser = JSON.parse(localStorage.getItem('currentUser') || "null");
-if(!currentUser){
-    window.location.href="../index.html";
-}
+if(!currentUser){ window.location.href="/pagini/inreg.html"; }
 
 // vedem profilul
 document.getElementById('userName').innerText = currentUser.name;
@@ -233,15 +233,10 @@ window.onload = function(){
 
 <script>
 
-if(!currentUser){
-    window.location.href = "../index.html";
-}
-
 // Aratam linku numa lu admin
 if(currentUser.role === "admin"){
     document.getElementById("adminPanelLink").style.display = "block";
 }
-
 </script>
 
     <!---->

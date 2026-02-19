@@ -26,7 +26,7 @@
                 <button id="menu-close-button" class="fas fa-times"></button>
 
                 <li class="nav-intem">
-                    <a href="home.html" class="nav-link">Acasă</a>
+                    <a href="../index.html" class="nav-link">Acasă</a>
                 </li>
                 <li class="nav-intem">
                     <a href="despre.html" class="nav-link">Despre noi</a>
@@ -44,8 +44,11 @@
                     <a href="recenzii.html" class="nav-link active">Recenzii</a>
                 </li>
                 <li class="nav-intem">
-                    <a href="account.html" class="nav-btn">Contul Tău</a>
+                    <a href="account.html" class="nav-btn">Contul</a>
                 </li>
+                <li class="nav-intem">
+                                <a href="cos.html" class="cosulet">🛒</a>
+                            </li>
             </ul>
 
             <button id="menu-open-button" class="fas fa-bars"></button>
@@ -71,18 +74,22 @@
                 </div>
             </div>
         </section>
+<section class="recenzion">
+    <h2 class="section-title">Recenzii utilizatorilor noștri</h2>
 
-        <h1>Recenzii utilizatori</h1>
-
-        <!-- Форма для отправки отзыва -->
+        <!-- forma pentru recxenzii -->
         <div class="review-form">
             <textarea id="reviewInput" placeholder="Scrie recenzia ta..."></textarea>
             <br>
             <button onclick="addReview()">Trimite recenzia</button>
         </div>
 
+        
+
         <h2>Recenzii</h2>
         <div id="reviewsList">Se încarcă recenziile...</div>
+
+        </section>
     </main>
     
         <!--footer-->
@@ -126,11 +133,13 @@
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
     
-    // Авторизация
+    // inregistrare
     let currentUser = JSON.parse(localStorage.getItem('currentUser') || "null");
-    if(!currentUser){ window.location.href="../index.html"; }
+    if(!currentUser){ window.location.href="/pagini/inreg.html"; }
     
-    // Форма писем показывается только для админа
+    // Formularul de scrisoare este afișat doar administratorului.
+
+
     if(currentUser.role === "admin") document.getElementById("mailForm").style.display="block";
     
     // ----------------- ОТЗЫВЫ -------------------
@@ -188,7 +197,7 @@
     );}
     function deleteReview(key){ database.ref('reviews/'+key).remove().then(()=>showReviews()); }
     
-    // ----------------- ПИСЬМА -------------------
+    // ----------------- Scrisori -------------------
     function showMail(){
     const div = document.getElementById("mailList");
     div.innerHTML="Scrisorile se încarcă...";
@@ -200,7 +209,8 @@
     mailsArr.sort((a,b)=>b.timestamp - a.timestamp);
     
     mailsArr.forEach(m=>{
-        if(currentUser.role!=="admin" && m.to !== currentUser.name) return; // обычный видит только свои письма
+        if(currentUser.role!=="admin" && m.to !== currentUser.name) return; // O persoană obișnuită își vede doar propriile e-mailuri.
+
     
         const divCard=document.createElement("div");
         divCard.className="review-card";
@@ -235,7 +245,7 @@
     });
     }
     
-    // Авто обновление
+    // incarcarea recenziilor auto
     window.onload = function(){
     showReviews();
 };

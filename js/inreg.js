@@ -34,7 +34,7 @@ let currentUser = JSON.parse(localStorage.getItem('currentUser') || "null");
 
 // Если уже авторизован → сразу в home.html
 if(currentUser){
-    window.location.href='pagini/home.html';
+    window.location.href='../index.html';
 }
 
 // Переключение форм
@@ -67,7 +67,7 @@ function registerUser(){
                 localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 // Сохраняем сессию в Firebase
                 database.ref('currentSessions/'+name).set(true);
-                window.location.href='pagini/home.html';
+                window.location.href='../index.html';
             }).catch(err=>alert("Erroare: "+err.message));
         });
     }
@@ -85,7 +85,7 @@ function loginUser(){
         currentUser=adminUser;
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         database.ref('currentSessions/'+name).set(true);
-        window.location.href='pagini/home.html';
+        window.location.href='../index.html';
         return;
     }
 
@@ -98,7 +98,7 @@ function loginUser(){
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         // Сохраняем сессию
         database.ref('currentSessions/'+name).set(true);
-        window.location.href='pagini/home.html';
+        window.location.href='../index.html';
     }).catch(err=>alert("Eroare de conectare: "+err.message));
 }
 
@@ -311,4 +311,6 @@ window.onload=function(){
     if(currentUser) showReviewBox();
     else showLoginBox();
 };
+
+if(!currentUser){ window.location.href="/pagini/inreg.html"; }
 

@@ -49,7 +49,7 @@ button {
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .section-content {
@@ -78,6 +78,206 @@ img {
 a {
     text-decoration: none;
 }
+
+
+.cart-card{
+    position: relative;
+    background:#fff;
+    border-radius:25px;
+    padding:20px;
+    margin:20px auto;
+    width:260px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    text-align:center;
+    transition:0.3s;
+}
+
+.cart-card:hover{
+    transform:translateY(-5px);
+}
+
+/* imagine produs */
+.cart-img{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+/* info produs */
+.cart-info h4{
+    margin:0;
+    font-size:18px;
+}
+
+.cart-info p{
+    color:#750f23;
+    font-weight:bold;
+    font-size:16px;
+}
+
+/* buton stergere */
+.remove-btn{
+    position:absolute;
+    top:10px;
+    right:10px;
+    border:none;
+    background:none;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.cart-row{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#fff;
+    padding:15px;
+    border-radius:20px;
+    margin:15px 0;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* imagine */
+.cart-img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* info */
+.cart-info{
+    flex:1;
+}
+
+/* cantitate */
+.qty{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.qty button{
+    background:#750f23;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* stergere */
+.remove-btn{
+    background:none; 
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* lista orizontală */
+#cart-list{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* card produs */
+.cart-card{
+    position:relative;
+    width:200px;
+    padding:15px;
+    background:white;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* imagine */
+.cart-img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* badge x numar */
+.badge{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:#f3961c;
+    color:white;
+    padding:3px 8px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+/* stergere */
+.remove-btn{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:18px;
+}
+
+
+
+.modal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index: 20;
+}
+
+.modal-content{
+    background:white;
+    width:400px;
+    padding:20px;
+    margin:10% auto;
+    border-radius:10px;
+}
+
+.close{
+    float:right;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.cart-totall 
+{
+    padding: 5px 9px;
+    color: var(--dark-color);
+    font-size: var(--font-size-n);
+    border-radius: var(--border-radius-m);
+    transition: 0.3s ease;
+}
+
+.cart-totall:hover
+{
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
+
+form.comand 
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    gap: 5px;
+}
+
 
 /* navbar styles*/
 
@@ -221,7 +421,7 @@ header .navbar {
 
 /*despre noi stiluri*/
 .about-section {
-    padding: 120px 0;
+    padding: 120px 15%;
     background: var(--light-pink-color);
 }
 
@@ -275,13 +475,15 @@ header .navbar {
 .menu-section {
     color: var(--white-color);
     background: var(--dark-color);
-    padding: 50px 0 100px;
+    padding: 50px 10%;
+    margin: 0 10%;
 }
 
 .menu-section.produse {
     color: var(--dark-color);
     background: var(--white-color);
     padding: 50px 0 100px;
+    position: relative;
 }
 
 .menu-section .menu-list {
@@ -319,9 +521,30 @@ header .navbar {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
+.menu-section .menu-list .menu-item .info .cumpar {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 10px;
+    background-color: #750f23;
+    color: var(--white-color);
+    padding: 5px 7px;
+    border-radius: var(--border-radius-s);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    
+}
+
+
 .menu-section .menu-list .menu-item .info:hover .pret {
     transform: translateY(0);
     opacity: 1;
+}
+
+.menu-section .menu-list .menu-item .info:hover .cumpar {
+    transform: translateY(0);
+    opacity: 1;
+    border-bottom: 4px solid #f3961c;
 }
 
 .menu-section .menu-list .menu-item .about-image {
@@ -370,7 +593,7 @@ header .navbar {
     border-radius: var(--border-radius-circle);
 }
 
-.testimonial-section .testimonial .name {
+.testimonial-section .testimonial .name { 
     margin-bottom: 16px;
     font-size: var(--font-size-m);
 }
@@ -396,17 +619,6 @@ header .navbar {
     color: var(--secondary-color);
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .section {
     opacity: 0;
     transform: translateY(50px);
@@ -418,23 +630,11 @@ header .navbar {
     transform: translateY(0);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*galerie*/
 
 .gallery-section {
-    padding: 50px 0 100px;
+    padding: 50px 0 10%;
+    margin: 0 10%;
 }
 
 .gallery-section .gallery-list {
@@ -528,7 +728,7 @@ header .navbar {
 section.sectionadm1 {margin-top:30px;}
 section.sectionadm1 h3 {margin-bottom:10px;}
 input.inp-adm {margin-bottom: 15px;}
-textarea.admtexta {width:100%; padding:10px; border-radius:8px; border:none; resize:none; margin-bottom:15px; background:#f3961c; color:white;}
+textarea.admtexta {width:100%; padding:10px; border-radius:8px; border:none; resize:none; margin-bottom:15px; background:#f3961c; color:black;}
 button.btn-scrisori, button.btn-logout {padding:8px 15px; border:none; border-radius:8px; cursor:pointer; background:#750f23; color:white; font-weight:500;}
 button.btn-scrisori:hover, button.btn-logout:hover {background:#750f23;}
 .mail-card {background:#f3961c; padding:15px; border-radius:12px; margin-bottom:15px; position:relative;}
@@ -611,6 +811,90 @@ button.btn-scrisori:hover, button.btn-logout:hover {background:#750f23;}
 .review-card .review-actions{margin-top:8px;display:flex;gap:10px;align-items:center;}
 .review-card button{padding:4px 10px;border:none;border-radius:5px;cursor:pointer;}
 
+.recenzion {
+    margin: 20px 10%;
+}
+
+.miere-info {
+    background: url(../imagini/miere-fundal.jpg);
+    background-color: transparent;
+    width: 100%;
+    height: 250px;
+    display: var(--font-size-1);
+    margin: 10px 6%;
+    
+}
+
+.info-despre {
+    text-align: center;
+    color: #750f23;
+    font-size: 40px;
+    border-radius: 30px 15px 30px 15px;
+    margin-bottom: 50px;
+}
+
+
+div a.despre-buton {
+    background: #c36e15;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-align: center;
+    color: #cfd6ff;
+    font-size: 18px;
+    justify-content: center;
+    transition: all 0.3s linear;
+}
+
+div a.despre-buton:hover {
+    background: #c0392b;
+    color: rgb(248, 211, 0);
+    transition: all 0.2 linear;
+}
+
+.blocks {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 15%;
+}
+
+
+.block {
+    width: 200px;
+}
+.block img {
+    text-align: center;
+    
+}
+.block h4 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.block p {
+    text-align: center;
+}
+
+.blocks .block img {
+    filter: brightness(0.85);
+    height:200px;
+    border-radius: 50%;
+    filter: brightness(0.80);
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: cen;
+}
+
+
+.cosulet {
+    font-size: 30px;
+    position: absolute;
+    top: 20px;
+}
+
+
+
 
 
 /* Animare */
@@ -627,8 +911,9 @@ button.btn-scrisori:hover, button.btn-logout:hover {background:#750f23;}
 /*contacte*/
 
 .contact-section {
-    padding: 50px 0 100px;
+    padding: 50px 10%;
     background: var(--light-pink-color);
+    text-align: center;
 }
 
 .contact-section .section-content {
@@ -1038,6 +1323,38 @@ section.mapa iframe {
     font-size: 16px;
 }
 
+/* modal normal desktop */
+.modal-content{
+    background:white;
+    width:400px;
+    padding:20px;
+    margin:10% auto;
+    border-radius:12px;
+    position:relative;
+}
+
+.modal-content input,
+.modal-content textarea{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+}
+
+
+.miere-info
+
+
+.despre-buton {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 25%;
+}
+
+
+
+
+
+
 @media screen and (max-width: 768px) {
     .mierea-si-sanatatea {
         padding: 20px;
@@ -1268,6 +1585,40 @@ section.mapa iframe {
 
     .footer-section .social-link-list {
         gap: 10px;
+    }
+
+    
+}
+
+
+@media (max-width: 600px){
+
+    .modal-content{
+        width:90%;
+        margin:25% auto;
+        padding:15px;
+    }
+
+    .modal-content h2{
+        font-size:20px;
+        text-align:center;
+    }
+
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content button{
+        font-size:16px;
+        padding:12px;
+    }
+
+    .cart-card{
+        width:100%;
+        margin-bottom:10px;
+    }
+    .modal-content input,
+    .modal-content textarea{
+        font-size:16px;
+        padding:10px;
     }
 }
 

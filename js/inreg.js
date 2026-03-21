@@ -135,12 +135,12 @@ window.onload=function(){
 
 // Добавление отзыва
 function addReview() {
-    if (!currentUser) return alert("Вы не авторизованы"); // 1. Проверка авторизации
+    if (!currentUser) return alert("Dumneavoastra nu sunteți autorizati"); // 1. Проверка авторизации
 
     const input = document.getElementById("reviewInput");
     const text = input.value.trim();
 
-    if (!text) return alert("Введите текст отзыва"); // 2. Проверка текста
+    if (!text) return alert("Scrieți recenzia"); // 2. Проверка текста
 
     // 3. Создаём объект отзыва
     const review = {
@@ -164,14 +164,14 @@ function addReview() {
             input.value = "";
             showReviews();
         })
-        .catch(err => alert("Ошибка при добавлении отзыва: " + err.message));
+        .catch(err => alert("Erroare în trimiterea recenziei: " + err.message));
 }
 
 
 // Показ отзывов
 function showReviews(){
     const div = document.getElementById("reviewsList");
-    div.innerHTML = "Загрузка отзывов...";
+    div.innerHTML = "Încarcarea recenziilor...";
 
     firebase.database().ref('reviews').once('value').then(snapshot=>{
         const reviews = snapshot.val();
@@ -208,7 +208,7 @@ function showReviews(){
             `;
             div.appendChild(reviewDiv);
         });
-    }).catch(err=>{div.innerHTML="Ошибка загрузки отзывов: "+err.message;});
+    }).catch(err=>{div.innerHTML="Erroare în încarcarea a recenzilor: "+err.message;});
 }
 
 // Лайки / Дизлайки
@@ -244,15 +244,15 @@ function deleteFirebaseReview(key){
 
 // Письма
 function sendFirebaseMail(){
-    if(currentUser.role!=="admin") return alert("Только админ может отправлять письма");
+    if(currentUser.role!=="admin") return alert("Numai administratorul poate scrie scrisori");
 
     const to=document.getElementById("mailTo").value.trim();
     const text=document.getElementById("mailInput").value.trim();
-    if(!to||!text) return alert("Заполните текст и получателя");
+    if(!to||!text) return alert("Împliniti numele utilizatorului si textul adresat lui");
 
     firebase.database().ref('users').once('value').then(snapshot=>{
         const usersDb=snapshot.val()||{};
-        if(!Object.values(usersDb).some(u=>u.name===to)) return alert("Такого пользователя нет");
+        if(!Object.values(usersDb).some(u=>u.name===to)) return alert("Asa utilizator nu exista");
 
         const newKey=firebase.database().ref().child('mails').push().key;
         const mail = {id:newKey, from:currentUser.name, to:to, text:text, timestamp:Date.now()};
@@ -261,17 +261,17 @@ function sendFirebaseMail(){
         firebase.database().ref().update(updates).then(()=>{
             document.getElementById("mailTo").value=""; document.getElementById("mailInput").value="";
             showFirebaseMail();
-        }).catch(err=>alert("Ошибка: "+err.message));
+        }).catch(err=>alert("Erroare: "+err.message));
     });
 }
 
 function showFirebaseMail(){
     const list=document.getElementById("mailList");
-    list.innerHTML="Загрузка писем...";
+    list.innerHTML="Incarcarea scrisorilor...";
 
     firebase.database().ref('mails').once('value').then(snapshot=>{
         const mails=snapshot.val(); list.innerHTML="";
-        if(!mails){ list.innerHTML="<p>Писем нет</p>"; return; }
+        if(!mails){ list.innerHTML="<p>Nu sunt scrisori</p>"; return; }
 
         const mailsArr=Object.keys(mails).map(k=>({id:k,...mails[k]}));
         mailsArr.sort((a,b)=>b.timestamp-a.timestamp);
@@ -284,7 +284,7 @@ function showFirebaseMail(){
 
             if(currentUser.role==="admin" && m.from===currentUser.name){
                 const delBtn=document.createElement("button");
-                delBtn.textContent="Удалить"; delBtn.style.background="red"; delBtn.style.color="white"; delBtn.style.marginLeft="10px";
+                delBtn.textContent="Sterge"; delBtn.style.background="red"; delBtn.style.color="white"; delBtn.style.marginLeft="10px";
                 delBtn.onclick=()=>deleteFirebaseMail(m.id); div.appendChild(delBtn);
             }
 

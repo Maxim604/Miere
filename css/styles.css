@@ -16,6 +16,7 @@
     --light-pink-color: #faf4f5;
     --medium-gray-color: #ccc;
 
+     --font-size-xs: 0.5rem;
     --font-size-s: 0.9rem;
     --font-size-n: 1rem;
     --font-size-m: 1.12rem;
@@ -1513,6 +1514,36 @@ section.mapa iframe {
     .calatoria-albinelor p {
         font-size: 10px !important;
     }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .navbar .nav-menu .nav-link {
+        color: var(--white-color);
+        display: block;
+        margin-top: 0px;
+        font-size: var(--font-size-s);
+        margin-bottom: 25px;
+
+    }
+    
+
+}
+
+@media screen and (max-width: 970px) {
+
+    .navbar .nav-menu .nav-link {
+        color: var(--white-color);
+        display: block;
+        margin-top: 0;
+        margin-bottom: 30px;
+        font-size: var(--font-size-xs);
+        text-align: center;
+        align-items: center;
+
+    }
+    
+
 }
 
 

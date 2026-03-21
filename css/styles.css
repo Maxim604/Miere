@@ -1033,9 +1033,13 @@ div a.despre-buton:hover {
 
 .cosulet {
     font-size: 30px;
-    position: absolute;
-    top: 20px;
+    position: relative;
+    top: -10px;
+    margin: 10px 5px;
 }
+
+
+
 
 
 
@@ -1536,6 +1540,14 @@ section.mapa iframe {
 
 /**/
 @media screen and (max-width: 900px) {
+
+    .cosulet {
+        font-size: 35px;
+        position: absolute;
+        top: 30px;
+        margin: 10px 5px;
+        left: 120px;
+    }
 
     .profile {
         background: #f3961c;

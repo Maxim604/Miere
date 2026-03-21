@@ -135,14 +135,14 @@
     
     // inregistrare
     let currentUser = JSON.parse(localStorage.getItem('currentUser') || "null");
-    if(!currentUser){ window.location.href="pagini/inreg.html"; }
+    if(!currentUser){ window.location.href="inreg.html"; }
     
     // Formularul de scrisoare este afișat doar administratorului.
 
 
     if(currentUser.role === "admin") document.getElementById("mailForm").style.display="block";
     
-    // ----------------- ОТЗЫВЫ -------------------
+    // ----------------- Recenzii -------------------
     function showReviews(){
     const div = document.getElementById("reviewsList");
     div.innerHTML="Recenziile se încarcă...";

@@ -16,7 +16,7 @@
     --light-pink-color: #faf4f5;
     --medium-gray-color: #ccc;
 
-     --font-size-xs: 0.5rem;
+    --font-size-xs: 0.5rem;
     --font-size-s: 0.9rem;
     --font-size-n: 1rem;
     --font-size-m: 1.12rem;
@@ -499,6 +499,11 @@ header .navbar {
     flex-direction: column;
     justify-content: space-between;
     width: calc(100% / 3 - 110px);
+    transition: box-shadow 0.3s ease;
+}
+
+.menu-section .menu-list .menu-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .menu-section .menu-list .menu-item .menu-image {
@@ -506,23 +511,10 @@ header .navbar {
     height: 200px;
 }
 
-.menu-section .menu-list .menu-item .info .pret {
-    position: absolute;
-    margin-top: -50px;
-    margin-left: 230px;
-    background-color: #750f23;
-    color: var(--white-color);
-    padding: 5px 7px;
-    border-radius: var(--border-radius-s);
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
 .menu-section .menu-list .menu-item .info .cumpar {
     position: absolute;
     margin-top: -50px;
-    margin-left: 10px;
+    margin-left: 15px;
     background-color: #750f23;
     color: var(--white-color);
     padding: 5px 7px;
@@ -533,10 +525,21 @@ header .navbar {
 
 }
 
+.menu-section .menu-list .menu-item .pretul .pret {
+    background-color: #750f23;
+    color: var(--white-color);
+    padding: 7px 15px;
+    border-radius: var(--border-radius-s);
+    border-bottom: 4px solid #d9822b;
+    transition: all ease 0.2s;
+}
 
-.menu-section .menu-list .menu-item .info:hover .pret {
-    transform: translateY(0);
-    opacity: 1;
+.menu-section .menu-list .menu-item .pretul .pret:hover {
+    background-color: #d9822b;
+    color: var(--white-color);
+    border-bottom: 4px solid #750f23;
+    transition: all linear 0.3s;
+
 }
 
 .menu-section .menu-list .menu-item .info:hover .cumpar {
@@ -986,13 +989,16 @@ div a.despre-buton:hover {
 
 .blocks {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin: 50px 15%;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
 }
 
 
 .block {
-    width: 200px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1250,10 +1256,11 @@ section.mapa iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 15%;
+    margin: 20px 10%;
     background-color: #f5f0e1;
     border-radius: 12px;
     gap: 30px;
+    padding: 10px 20px;
 }
 
 .despre-miere .descriere {
@@ -1299,16 +1306,16 @@ section.mapa iframe {
     border-radius: 12px;
     margin-bottom: 40px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
 }
 
 .calatoria-albinelor .pas {
     background-color: #fff6e5;
-    width: 350px;
-    height: 400px;
+    width: 100%;
+    height: 200px;
     text-align: center;
     padding: 15px;
     display: flex;
@@ -1351,7 +1358,7 @@ section.mapa iframe {
 }
 
 .mierea-si-sanatatea {
-    padding: 20px 15%;
+    padding: 20px 10%;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
@@ -1526,11 +1533,11 @@ section.mapa iframe {
         margin-bottom: 25px;
 
     }
-    
+
 
 }
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 910px) {
 
     .navbar .nav-menu .nav-link {
         color: var(--white-color);
@@ -1542,13 +1549,22 @@ section.mapa iframe {
         align-items: center;
 
     }
-    
 
+    .miere-section .section-content {
+        align-items: center;
+        height: 500px;
+        justify-content: space-between;
+    }
+
+    .miere-section {
+        height: 500px;
+    }
 }
 
 
 /**/
 @media screen and (max-width: 1200px) {
+
     .calatoria-albinelor h3 {
         font-size: 20px;
         margin-bottom: 10px;
@@ -1570,7 +1586,7 @@ section.mapa iframe {
 }
 
 /**/
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1300px) {
 
     .cosulet {
         font-size: 35px;
@@ -1676,6 +1692,7 @@ section.mapa iframe {
         padding: 30px, 20px, 20px;
         flex-direction: column-reverse;
         justify-content: center;
+        min-height: 70vh;
     }
 
     .miere-section .miere-details :is(.subtitle, .description),
@@ -1750,6 +1767,10 @@ section.mapa iframe {
     .footer-section .social-link-list {
         gap: 15px;
     }
+
+    .miere-section .section-content {
+        padding-top: 100px;
+    }
 }
 
 @media screen and (max-width: 850px) {
@@ -1765,10 +1786,17 @@ section.mapa iframe {
     .block p {
         font-size: 12px;
     }
+
+    .miere-section .section-content {
+        padding-top: 310px;
+    }
 }
 
 /**/
 @media screen and (max-width: 640px) {
+
+
+
     .menu-section .menu-list {
         gap: 60px;
     }
@@ -1854,8 +1882,15 @@ section.mapa iframe {
 }
 
 @media screen and (max-width: 400px) {
+
     .calatoria-albinelor .pas {
         max-height: 250px;
+
+    }
+
+    .calatoria-albinelor .pas {
+        max-height: 250px;
+
     }
 
     .calatoria-albinelor h3 {

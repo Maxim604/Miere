@@ -160,6 +160,7 @@
         r.dislikes=r.dislikes||[];
         const liked=r.likes.includes(currentUser.name);
         const disliked=r.dislikes.includes(currentUser.name);
+        // cine poate sa sterga recenzia
         const canDelete=currentUser.name===r.name || (currentUser.role==="admin" && r.role==="user");
     
         const reviewDiv=document.createElement("div");
@@ -197,64 +198,15 @@
     );}
     function deleteReview(key){ database.ref('reviews/'+key).remove().then(()=>showReviews()); }
     
-    // ----------------- Scrisori -------------------
-    function showMail(){
-    const div = document.getElementById("mailList");
-    div.innerHTML="Scrisorile se încarcă...";
-    database.ref('mails').once('value').then(snapshot=>{
-    const mails = snapshot.val(); div.innerHTML="";
-    if(!mails){ div.innerHTML="<p>Nu sunt scrisori</p>"; return; }
-    
-    const mailsArr = Object.keys(mails).map(k=>({id:k,...mails[k]}));
-    mailsArr.sort((a,b)=>b.timestamp - a.timestamp);
-    
-    mailsArr.forEach(m=>{
-        if(currentUser.role!=="admin" && m.to !== currentUser.name) return; // O persoană obișnuită își vede doar propriile e-mailuri.
-
-    
-        const divCard=document.createElement("div");
-        divCard.className="review-card";
-        divCard.style.background="#2a2f57";
-        let content=`<b>${m.from} → ${m.to}</b><br>${m.text}`;
-        divCard.innerHTML=content;
-    
-        // удаление письма (для админа или для отправителя)
-        if(currentUser.role==="admin" || m.to===currentUser.name){
-            const btn = document.createElement("button");
-            btn.textContent="Șterge";
-            btn.style.background="red"; btn.style.color="white"; btn.style.marginTop="5px";
-            btn.onclick=()=>{ database.ref('mails/'+m.id).remove().then(()=>showMail()); };
-            divCard.appendChild(btn);
-        }
-        div.appendChild(divCard);
-    });
-    });
-    }
-    
-    function sendFirebaseMail(){
-    if(currentUser.role!=="admin") return alert("Doar administratorul poate trimite scrisori");
-    const to=document.getElementById("mailTo").value.trim();
-    const text=document.getElementById("mailInput").value.trim();
-    if(!to||!text) return alert("Completați destinatarul și textul");
-    database.ref('users').once('value').then(snapshot=>{
-    const users=snapshot.val()||{};
-    if(!Object.values(users).some(u=>u.name===to)) return alert("Utilizatorul nu există");
-    const newKey = database.ref().child('mails').push().key;
-    const mail={id:newKey,from:currentUser.name,to:to,text:text,timestamp:Date.now()};
-    database.ref('mails/'+newKey).set(mail).then(()=>{ document.getElementById("mailTo").value=""; document.getElementById("mailInput").value=""; showMail(); });
-    });
-    }
-    
     // incarcarea recenziilor auto
     window.onload = function(){
     showReviews();
 };
 
-    
-    </script>
+</script>
 
-    <!---->
-    <script src="../js/main.js"></script>
+<!--  -->
+<script src="../js/main.js"></script>
 </body>
 
 </html>
